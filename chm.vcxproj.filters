@@ -18,11 +18,23 @@
     <ClCompile Include="laba1.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="maint_func_realis.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="in.txt">
       <Filter>Исходные файлы</Filter>
     </Text>
     <Text Include="out.txt" />
+    <Text Include="expect.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="laba1.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
