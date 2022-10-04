@@ -104,13 +104,19 @@ void matrix::output(string name)
 	ofstream fout(name);
 
 	// fout << scientific;
+	string s = typeid(b[0]).name();
+	fout << fixed;
+	if (s == "float")
+		fout.precision(7);
+	else
+		fout.precision(15);
 
 	fout << "al = { " << endl;
 
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < k; j++) {
-			fout.width(10);
+			fout.width(15);
 			fout << al[i][j] << " ";
 		}
 		if (i != n - 1)
@@ -125,7 +131,7 @@ void matrix::output(string name)
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < k; j++) {
-			fout.width(10);
+			fout.width(15);
 			fout << au[i][j] << " ";
 		}
 		if (i != n - 1)
@@ -137,4 +143,40 @@ void matrix::output(string name)
 	for (int i = 0; i < n; i++)
 		fout << b[i] << endl;
 	fout << "}" << endl;
+}
+
+void matrix::set_Hilbert(int size) {
+	n = size;
+	k = n - 1;
+
+	real *x = new real[n];
+
+	al = new real * [n];
+	au = new real * [n];
+	di = new real[n];
+	b = new real[n];
+
+	for (int i = 0; i < n; i++)
+	{
+		al[i] = new real[k];
+		au[i] = new real[k];
+	}
+
+	for (int i = 0; i < n; i++) {
+		for (int j = 0, h = 1; j < k; j++) {
+			al[i][j] = (i + j < k) ? 0 : 1.0 / (i + (real)h);
+			au[i][j] = (i + j < k) ? 0 : 1.0 / (i + (real)h);
+			h += al[i][j] != 0 ? 1 : 0;
+		}
+		di[i] = 1.0 / (2.0 * i + 1);
+	}
+
+	for (int i = 0; i < n; i++)
+		x[i] = (real)(i + 1);
+	
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < k; j++) {
+
+		}
+	}
 }

@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string.h>
 
-#define DDF
+#define DD
 
 #ifdef DDF
 typedef double real_sum;
@@ -39,6 +39,7 @@ struct matrix
 	void forward_subs();
 	void back_subs();
 	void output(string name);
+	void set_Hilbert(int k);
 };
 
 #endif // LABA1_H_ 
