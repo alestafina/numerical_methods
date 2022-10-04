@@ -69,7 +69,7 @@ void matrix::forward_subs()
 	// Затем решаем Dz = y, D - диагональная матрица, z = Ux, 
 	// результат записываем в y (то есть в вектор b).
 
-	real sum;
+	real_sum sum;
 
 	for (int i = 1; i < n; i++)
 	{
@@ -88,7 +88,7 @@ void matrix::back_subs()
 	// U - верхнетреугольная матрица с 1 на диагонали,
 	// x - решение СЛАУ, ответ записываем в z (то есть опять в вектор b).
 
-	real sum;
+	real_sum sum;
 
 	for (int i = n - 2; i >= 0; i--)
 	{
@@ -133,8 +133,8 @@ void matrix::output(string name)
 	}
 	fout << "}" << endl << endl;
 
-	fout << "x = { ";
+	fout << "x = { " << endl;
 	for (int i = 0; i < n; i++)
-		fout << b[i] << " ";
+		fout << b[i] << endl;
 	fout << "}" << endl;
 }
