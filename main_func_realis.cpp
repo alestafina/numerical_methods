@@ -45,13 +45,13 @@ void matrix::decompositionLDU()
 		{
 			sumL = 0.0;
 			sumU = 0.0;
-			for (int h = 1, t = i - k, p = k - j; h <= j && t <= i - j && p < k; h++, t++, p++)
+			for (int h = 1, t = i - k, p = k - j; h <= j && t <= i - j + 1 && p < k; h++, t++, p++)
 			{
 				sumL += al[i][h - 1] * di[t] * au[abs(i - k + j)][p];
 				sumU += au[i][h - 1] * di[t] * al[abs(i - k + j)][p];
 			}
-			al[i][j] = (al[i][j] - sumL) / di[i + j - k];
-			au[i][j] = (au[i][j] - sumU) / di[i + j - k];
+			al[i][j] = (al[i][j] - sumL) / di[max(0, i + j - k)];
+			au[i][j] = (au[i][j] - sumU) / di[max(0, i + j - k)];
 		}
 		for (int j = 0, h = k; j < k && h > 0; j++, h--)
 		{
@@ -103,14 +103,16 @@ void matrix::output(string name)
 {
 	ofstream fout(name);
 
-	fout << n << " " << k << endl;
+	// fout << scientific;
 
 	fout << "al = { " << endl;
 
 	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < k; j++)
+		for (int j = 0; j < k; j++) {
+			fout.width(10);
 			fout << al[i][j] << " ";
+		}
 		if (i != n - 1)
 			fout << endl;
 	}
@@ -122,8 +124,10 @@ void matrix::output(string name)
 
 	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; j < k; j++)
+		for (int j = 0; j < k; j++) {
+			fout.width(10);
 			fout << au[i][j] << " ";
+		}
 		if (i != n - 1)
 			fout << endl;
 	}

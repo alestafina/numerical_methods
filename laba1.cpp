@@ -3,11 +3,11 @@
 int main()
 {
 	matrix *A = new matrix;
-	A->input_testmem();
-	A->testgen();
-	A->output("expect.txt");
-	A->mult_LDU();
-	A->output_inp_data("in.txt");
+	A->input("in.txt");
+	A->decompositionLDU();
+	A->forward_subs();
+	A->back_subs();
+	A->output("out.txt");
 	return 0;
 }
 
