@@ -6,7 +6,6 @@
 #include <string.h>
 
 #define DD
-
 #ifdef DDF
 typedef double real_sum;
 typedef float real;
@@ -28,10 +27,10 @@ struct matrix
 	// au - массив для хранения верхнего треугольника матрицы,
 	// di - массив для хранения диагональных элементов,
 	// b - вектор правых частей, n - размерность матрицы А,
-	// k - ширина ленты
+	// k - ширина ленты, x - вектор-решение СЛАУ (нужен для исследований)
 
 	real **al = NULL, **au = NULL, *di = NULL;
-	real *b = NULL;
+	real *b = NULL, *x = NULL;
 	int n = 0, k = 0;
 
 	void input(string name);
@@ -39,7 +38,20 @@ struct matrix
 	void forward_subs();
 	void back_subs();
 	void output(string name);
+	void mult_mx_v();
 	void set_Hilbert(int k);
+};
+
+struct dense_matrix 
+{
+	real **a = NULL;
+	real *b = NULL, *x = NULL;
+	int n;
+
+	void band_to_dense(matrix *m);
+	void input_DM(string name);
+	void Gauss_method();
+	void output_DM(string name);
 };
 
 #endif // LABA1_H_ 
