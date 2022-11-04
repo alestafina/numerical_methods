@@ -27,7 +27,6 @@
       <Filter>Исходные файлы</Filter>
     </Text>
     <Text Include="out.txt" />
-    <Text Include="expect.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="laba1.h">
