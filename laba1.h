@@ -21,6 +21,9 @@ typedef double real, real_sum;
 
 using namespace std;
 
+
+// com
+
 struct matrix
 {
 	// al - массив для хранения нижнего треугольника матрицы,
