@@ -143,7 +143,6 @@
     <ClCompile Include="main_func_realis.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="expect.txt" />
     <Text Include="in.txt" />
     <Text Include="out.txt" />
   </ItemGroup>
